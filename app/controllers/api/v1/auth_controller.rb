@@ -3,7 +3,6 @@ class Api::V1::AuthController < ApplicationController
 
  def login
    member = Member.find_by(email: params[:email])
-   # debugger
    if member && member.authenticate(params[:password])
      token = generate_token(member)
      render json: { token: token, member: { id: member.id, email: member.email, name: member.name } }, status: 200
