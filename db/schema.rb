@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_215329) do
+ActiveRecord::Schema.define(version: 2018_09_21_163801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "date"
+    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "student_max"
+    t.integer "section_id"
+  end
+
+  create_table "enrolleds", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name"
@@ -25,6 +47,21 @@ ActiveRecord::Schema.define(version: 2018_09_19_215329) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "password_digest"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "title"
+    t.string "duration"
+    t.string "description"
+    t.string "location"
+    t.string "materials_provided"
+    t.string "materials_to_bring"
+    t.string "faqs"
+    t.integer "category_id"
+    t.integer "teacher_id"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
