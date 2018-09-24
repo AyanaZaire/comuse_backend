@@ -1,5 +1,7 @@
 class Api::V1::SectionController < ApplicationController
 
+  skip_before_action :authenticate, only: [:index]
+
   def index
     render json: Section.all
   end

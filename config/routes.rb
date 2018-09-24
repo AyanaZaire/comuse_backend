@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
       namespace :v1 do
-        resources :members
+        resources :members, :section, :course, :enrolled, :category 
         post '/login', to: 'auth#login'
         get '/me', to: 'members#show'
       end
