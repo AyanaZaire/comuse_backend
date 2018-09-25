@@ -2,6 +2,10 @@ class Api::V1::EnrolledController < ApplicationController
 
   skip_before_action :authenticate, only: [:index]
 
+  def index
+    render json: Enrolled.all
+  end
+
   def create
     render json: Enrolled.create(enrolled_params)
   end
