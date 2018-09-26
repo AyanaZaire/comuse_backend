@@ -12,6 +12,7 @@ class Api::V1::SectionController < ApplicationController
   end
 
   def create
+    # debugger
     @section = Section.create(section_params)
     render json: @section
   end
