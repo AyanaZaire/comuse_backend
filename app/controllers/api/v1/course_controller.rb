@@ -1,7 +1,7 @@
 class Api::V1::CourseController < ApplicationController
 
-  skip_before_action :authenticate, only: [:index]
-  
+  skip_before_action :authenticate, only: [:index, :show]
+
   def index
     render json: Course.all
   end
@@ -28,7 +28,7 @@ class Api::V1::CourseController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:date, :time)
+    params.require(:course).permit(:date, :time, :student_max, :section_id)
   end
 
 end
