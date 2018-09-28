@@ -13,7 +13,7 @@ class Api::V1::MembersController < ApplicationController
 
   def show
     # show the profile
-    render json: { id: current_member.id, email: current_member.email, name: current_member.name }
+    render json: { id: current_member.id, email: current_member.email, name: current_member.name, img_url: current_member.img_url }
   end
 
   def create
@@ -43,7 +43,7 @@ class Api::V1::MembersController < ApplicationController
   private
 
   def member_params
-    params.permit(:name, :bio, :location, :website, :skill, :email, :password)
+    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_url)
   end
 
 end

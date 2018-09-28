@@ -5,7 +5,7 @@ class Api::V1::AuthController < ApplicationController
    member = Member.find_by(email: params[:email])
    if member && member.authenticate(params[:password])
      token = generate_token(member)
-     render json: { token: token, member: { id: member.id, email: member.email, name: member.name } }, status: 200
+     render json: { token: token, member: { id: member.id, email: member.email, name: member.name, img_url: member.img_url } }, status: 200
    else
      # render "Failed" status: 404
    end
