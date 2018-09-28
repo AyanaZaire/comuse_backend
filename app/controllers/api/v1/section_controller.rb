@@ -29,7 +29,7 @@ class Api::V1::SectionController < ApplicationController
   private
 
   def section_params
-    params.require(:section).permit(:title, :duration, :category_id, :teacher_id, :description, :location, :price, :materials_provided, :materials_to_bring, :faqs)
+    params.require(:section).permit(:title, :duration, :category_id, :teacher_id, :description, :location, :price, :materials_provided, :materials_to_bring, :faqs, :img_url)
   end
 
 end
