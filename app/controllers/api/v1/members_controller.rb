@@ -1,15 +1,30 @@
+require 'oauth2'
+
 class Api::V1::MembersController < ApplicationController
 
-  skip_before_action :authenticate, only: [:index, :create]
+  skip_before_action :authenticate, only: [:index, :create, :stripe_callback]
 
   def index
     @members = Member.all
     render json: @members
   end
 
-  # def show
-  #   @member = Member.find(params[:id])
-  # end
+  def stripe_callback
+    options = {
+              site: 'https://connect.stripe.com',
+              authorize_url: '/oauth/authorize',
+              token_url: '/oauth/token'
+            }
+            code = params[:code]
+            id = params[:state]
+            client = OAuth2::Client.new(Rails.application.secrets.STRIPE_TEST_CLIENT_ID, Rails.application.secrets.STRIPE_TEST_SECRET_KEY, options)
+            @response = client.auth_code.get_token(code, :params => {:scope => 'read_write'})
+            @access_token = @response.token
+            @member = Member.find(id)
+            @member.update!(stripe_uid: @response.params["stripe_user_id"]) if @response
+
+    redirect_to "http://localhost:3001"
+  end
 
   def show
     # show the profile
