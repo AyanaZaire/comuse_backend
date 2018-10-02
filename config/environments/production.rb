@@ -1,6 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #Access the environment variables in your app
+  STRIPE_TEST_CLIENT_ID = Rails.application.secrets.STRIPE_TEST_CLIENT_ID
+  STRIPE_LIVE_CLIENT_ID = Rails.application.secrets.STRIPE_LIVE_CLIENT_ID
+
+
+  STRIPE_TEST_PUBLISHABLE_KEY            = Rails.application.secrets.STRIPE_TEST_PUBLISHABLE_KEY
+  STRIPE_TEST_SECRET_KEY          = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+
+  STRIPE_LIVE_PUBLISHABLE_KEY            = Rails.application.secrets.STRIPE_LIVE_PUBLISHABLE_KEY
+  STRIPE_LIVE_SECRET_KEY          = Rails.application.secrets.STRIPE_LIVE_SECRET_KEY
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

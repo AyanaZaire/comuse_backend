@@ -3,12 +3,18 @@ Rails.application.routes.draw do
 
   namespace :api do
       namespace :v1 do
-        resources :members, :section, :course, :enrolled, :category 
-        post '/login', to: 'auth#login'
         get '/me', to: 'members#show'
+        get "/oauth/callback", to:'members#stripe_callback'
+        post "/charge", to:'section#process_payment'
+        resources :members, :section, :course, :enrolled, :category, :charges
+        # get '/charges', to: 'charges#create'
+        post '/login', to: 'auth#login'
+
       end
     end
 
 
 
 end
+
+# http://localhost:3001/oauth/callback?code=ac_DhwexqsnkiZqbs1YQdjndhAbjLV4wenW&state=1
