@@ -2,36 +2,43 @@ require "stripe"
 
 class Api::V1::ChargesController < ApplicationController
 
-  skip_before_action :authenticate, only: [:index, :create]
+  skip_before_action :authenticate, only: [:new, :create]
 
-  Stripe.api_key = "sk_test_vHtZZjoJQelgCTGZbnTUxDHM"
+  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
 
-  # def index
-  #   render json: Stripe::Charge.all
-  # end
+  #https://stripe.com/docs/connect/destination-charges
+  def create
+      card_token = params[:charges][:stripeToken]
 
-  def new
+      # Amount in cents
+      amount = params[:charges][:amount]
+      description = params[:charges][:description]
+      teacher = params[:charges][:teacher]
+      teacher_stripeuid = Member.find(teacher[:id]).stripe_uid
+
+      #platform's cut
+      cut = ((amount * 10)/100)
+      percentage = (amount - cut)
+
+      customer = Stripe::Customer.create(email: current_member.email, card: card_token)
+
+      charge = Stripe::Charge.create({
+                  customer: customer.id,
+                  amount: amount,
+                  description: description,
+                  currency: 'usd',
+                  # :source => card_token,
+                  destination: {
+                    amount: percentage,
+                    account: teacher_stripeuid
+                  }
+                })
   end
 
-  def create
-    # Amount in cents
-    # @amount = 500
-    #
-    # customer = Stripe::Customer.create(
-    #   :email => params[:stripeEmail],
-    #   :source  => params[:stripeToken]
-    # )
+  private
 
-    charge = Stripe::Charge.create({
-          amount: 999,
-          currency: 'usd',
-          source: 'tok_visa',
-          receipt_email: 'jenny.rosen@example.com',
-      })
-
-  # rescue Stripe::CardError => e
-  #   flash[:error] = e.message
-  #   redirect_to new_charge_path
+  def charges_params
+    params.require(:charges).permit(:stripeToken, :amount, :description, :teacher)
   end
 
 end

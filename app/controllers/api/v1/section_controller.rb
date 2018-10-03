@@ -1,34 +1,14 @@
+require "stripe"
+
 class Api::V1::SectionController < ApplicationController
 
-  skip_before_action :authenticate, only: [:index, :process_payment]
+  skip_before_action :authenticate, only: [:index]
+
+  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
 
   def index
     render json: Section.all
   end
-
-  #https://stripe.com/docs/connect/destination-charges
-
-  def process_payment
-    debugger
-        #the amount must be in cents
-        amount = section.price * 100
-        #this is your cut
-        percentage = ((amount * 20)/100)
-        customer = Stripe::Customer.create email: email,
-                                           card: card_token
-
-        charge = Stripe::Charge.create({
-                :amount => section.price * 100,
-                :description => section.description,
-                :currency => 'usd',
-                :source => "tok_visa",
-                :destination => {
-                  :amount => percentage,
-                  #should this be :teacher, class_name: "Member"?
-                  :account => section.member.stripe_uid,
-                }
-        })
-   end
 
   def show
     @section = Section.find(params[:id])

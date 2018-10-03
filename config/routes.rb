@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       namespace :v1 do
         get '/me', to: 'members#show'
         get "/oauth/callback", to:'members#stripe_callback'
-        post "/charge", to:'section#process_payment'
+        post "/charge", to:'charges#create'
+        post "/stripe", to:'members#payment_profile'
         resources :members, :section, :course, :enrolled, :category, :charges
         # get '/charges', to: 'charges#create'
         post '/login', to: 'auth#login'
