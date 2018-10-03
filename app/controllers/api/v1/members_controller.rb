@@ -4,6 +4,8 @@ class Api::V1::MembersController < ApplicationController
 
   skip_before_action :authenticate, only: [:index, :create, :stripe_callback]
 
+  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+
   def index
     @members = Member.all
     render json: @members
@@ -25,6 +27,14 @@ class Api::V1::MembersController < ApplicationController
 
     redirect_to "http://localhost:3001"
   end
+
+  #this is where a user will be able to see their balance info
+   # def payment_profile
+   #   @member = Member.find(params[:member][:id])
+   #   @stripe_uid =  @member.stripe_uid
+   #   @account = Stripe::Account.retrieve(@stripe_uid) if @member.stripe_uid.present?
+   #   @balance = Stripe::Balance.retrieve() if @member.stripe_uid.present?
+   # end
 
   def show
     # show the profile
@@ -58,7 +68,7 @@ class Api::V1::MembersController < ApplicationController
   private
 
   def member_params
-    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_url)
+    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_urls)
   end
 
 end

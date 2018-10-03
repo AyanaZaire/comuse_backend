@@ -10,7 +10,7 @@ class CreateSections < ActiveRecord::Migration[5.2]
       t.string :faqs
       t.integer :category_id
       t.integer :teacher_id
-      t.decimal :price
+      t.decimal :price, precision: 10, scale: 2
 
       t.timestamps
     end
