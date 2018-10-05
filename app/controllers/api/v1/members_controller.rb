@@ -68,7 +68,7 @@ class Api::V1::MembersController < ApplicationController
   private
 
   def member_params
-    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_urls)
+    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_url)
   end
 
 end
