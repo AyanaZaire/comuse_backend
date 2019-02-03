@@ -1,4 +1,5 @@
 require "stripe"
+require 'pry'
 
 class Api::V1::SectionController < ApplicationController
 
@@ -7,6 +8,7 @@ class Api::V1::SectionController < ApplicationController
   Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
 
   def index
+    binding.pry
     render json: Section.all
   end
 

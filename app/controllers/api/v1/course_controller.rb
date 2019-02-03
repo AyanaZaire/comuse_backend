@@ -1,8 +1,11 @@
+require 'pry'
+
 class Api::V1::CourseController < ApplicationController
 
   skip_before_action :authenticate, only: [:index, :show]
 
   def index
+
     render json: Course.all
   end
 

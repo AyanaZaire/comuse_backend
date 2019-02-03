@@ -25,7 +25,7 @@ class Api::V1::MembersController < ApplicationController
             @member = Member.find(id)
             @member.update!(stripe_uid: @response.params["stripe_user_id"]) if @response
 
-    redirect_to "http://localhost:3001"
+    redirect_to "https://comuse.herokuapp.com/"
   end
 
   #this is where a user will be able to see their balance info
