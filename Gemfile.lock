@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/alexpeattie/heroku_secrets.git
+  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
+  specs:
+    heroku_secrets (0.0.2)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 9bc6ae85a560b660c468d591d8629809c6770a79
   specs:
@@ -173,6 +179,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
+  heroku_secrets!
   jwt
   listen (>= 3.0.5, < 3.2)
   oauth2
@@ -191,4 +198,4 @@ RUBY VERSION
    ruby 2.6.0p0
 
 BUNDLED WITH
-   1.17.1
+   1.17.2
