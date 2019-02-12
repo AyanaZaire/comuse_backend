@@ -13,7 +13,8 @@ class Api::V1::MembersController < ApplicationController
   end
 
   def stripe_callback
-    binding.pry
+    stripe_test_client_id = ENV['STRIPE_TEST_CLIENT_ID']
+    stripe_test_secret_key = ENV['STRIPE_TEST_SECRET_KEY']
     options = {
               site: 'https://connect.stripe.com',
               authorize_url: '/oauth/authorize',
@@ -21,7 +22,7 @@ class Api::V1::MembersController < ApplicationController
             }
             code = params[:code]
             id = params[:state]
-            client = OAuth2::Client.new(Rails.application.secrets.STRIPE_TEST_CLIENT_ID, Rails.application.secrets.STRIPE_TEST_SECRET_KEY, options)
+            client = OAuth2::Client.new(stripe_test_client_id, stripe_test_secret_key, options)
             @response = client.auth_code.get_token(code, :params => {:scope => 'read_write'})
             @access_token = @response.token
             @member = Member.find(id)
