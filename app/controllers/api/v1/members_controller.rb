@@ -1,4 +1,5 @@
 require 'oauth2'
+require 'pry'
 
 class Api::V1::MembersController < ApplicationController
 
@@ -12,6 +13,7 @@ class Api::V1::MembersController < ApplicationController
   end
 
   def stripe_callback
+    binding.pry
     options = {
               site: 'https://connect.stripe.com',
               authorize_url: '/oauth/authorize',
