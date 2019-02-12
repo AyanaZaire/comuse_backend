@@ -4,7 +4,7 @@ class Api::V1::ChargesController < ApplicationController
 
   skip_before_action :authenticate, only: [:new, :create]
 
-  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+  Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
   #https://stripe.com/docs/connect/destination-charges
   def create
