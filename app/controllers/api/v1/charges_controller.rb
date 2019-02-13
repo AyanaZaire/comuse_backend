@@ -1,5 +1,4 @@
 require "stripe"
-require 'byebug'
 
 class Api::V1::ChargesController < ApplicationController
 
