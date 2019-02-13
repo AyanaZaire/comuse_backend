@@ -8,7 +8,6 @@ class Api::V1::ChargesController < ApplicationController
 
   #https://stripe.com/docs/connect/destination-charges
   def create
-    byebug
       card_token = params[:charges][:stripeToken]
 
       # Amount in cents
