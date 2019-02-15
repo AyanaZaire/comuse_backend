@@ -1,11 +1,10 @@
 require "stripe"
-require 'pry'
 
 class Api::V1::SectionController < ApplicationController
 
   skip_before_action :authenticate, only: [:index]
 
-  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+  Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
   def index
     binding.pry
