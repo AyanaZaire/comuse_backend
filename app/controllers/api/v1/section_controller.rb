@@ -7,7 +7,6 @@ class Api::V1::SectionController < ApplicationController
   Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
   def index
-    binding.pry
     render json: Section.all
   end
 
