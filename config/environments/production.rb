@@ -67,6 +67,13 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "comuse_#{Rails.env}"
 
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'https://comuse.herokuapp.com/' }
+  # Setup for production - deliveries, no errors raised
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+
   config.action_mailer.perform_caching = false
 
   config.action_mailer.delivery_method = :smtp
