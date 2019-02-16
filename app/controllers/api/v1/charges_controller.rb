@@ -6,6 +6,7 @@ class Api::V1::ChargesController < ApplicationController
 
   #config/initializers/stripe.rb for to set up configuration
   Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
+  # Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
 
   #https://stripe.com/docs/connect/destination-charges
   def create

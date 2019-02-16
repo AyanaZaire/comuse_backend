@@ -12,9 +12,12 @@ class Api::V1::MembersController < ApplicationController
     render json: @members
   end
 
+  # how member connects their stripe account to co.muse
   def stripe_callback
     stripe_test_client_id = ENV['STRIPE_TEST_CLIENT_ID']
     stripe_test_secret_key = ENV['STRIPE_TEST_SECRET_KEY']
+    # stripe_test_client_id = Rails.application.secrets.STRIPE_TEST_CLIENT_ID
+    # stripe_test_secret_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
     options = {
               site: 'https://connect.stripe.com',
               authorize_url: '/oauth/authorize',
@@ -29,6 +32,7 @@ class Api::V1::MembersController < ApplicationController
             @member.update!(stripe_uid: @response.params["stripe_user_id"]) if @response
 
     redirect_to "https://comuse.herokuapp.com/"
+    # redirect_to "http://localhost:5000"
   end
 
   #this is where a user will be able to see their balance info

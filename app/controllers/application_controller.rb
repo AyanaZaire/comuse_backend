@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
 
   before_action :authenticate
 
+  # toggle api keys and urls in charges and members controller
+
   private
   def authenticate
     token = request.headers['Authorization'].split(' ')[1]
