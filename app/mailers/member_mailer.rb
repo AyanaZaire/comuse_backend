@@ -13,6 +13,16 @@ class MemberMailer < ApplicationMailer
     mail(to: @member.email, subject: 'Welcome to Co.muse')
   end
 
+  def enrolled_student(student, section)
+    @student = student
+    mail(to: @student.email, subject: 'Succesfully Enrolled')
+  end
+
+  def booked_class(teacher, section)
+    @teacher = teacher
+    mail(to: @teacher.email, subject: 'Someone just booked your course!')
+  end
+
   # def send_task_complete_email
   #   from = Email.new(email: 'comuse@gmail.com')
   #   to = Email.new(email: 'ayanazaire@gmail.com')

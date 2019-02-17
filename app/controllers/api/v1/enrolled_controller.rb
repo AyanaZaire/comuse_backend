@@ -7,7 +7,12 @@ class Api::V1::EnrolledController < ApplicationController
   end
 
   def create
-    render json: Enrolled.create(enrolled_params)
+    @enrolled = Enrolled.create(enrolled_params)
+    puts @enrolled
+    puts @enrolled.student
+    puts @enrolled.section.title
+    puts @enrolled.section.teacher.name
+    render json: @enrolled
     #create notifications
     # current_section = Section.find_by(id: enrolled_params[:section_id])
     # teacher_of_section = current_section.teacher
