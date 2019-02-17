@@ -9,7 +9,9 @@ class Api::V1::EnrolledController < ApplicationController
   def create
     @enrolled = Enrolled.create(enrolled_params)
     puts @enrolled
-    puts @enrolled.student
+    puts @enrolled.course.time
+    puts @enrolled.course.date
+    puts @enrolled.student.name
     puts @enrolled.section.title
     puts @enrolled.section.teacher.name
     render json: @enrolled
@@ -23,7 +25,7 @@ class Api::V1::EnrolledController < ApplicationController
   private
 
   def enrolled_params
-    params.permit(:student_id, :section_id)
+    params.permit(:student_id, :section_id, :course_id)
   end
 
 end
