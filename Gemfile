@@ -58,3 +58,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+
+gem 'sendgrid-ruby'

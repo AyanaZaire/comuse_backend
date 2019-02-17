@@ -70,20 +70,20 @@ Rails.application.configure do
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'https://comuse-backend.herokuapp.com/' }
   # Setup for production - deliveries, no errors raised
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default :charset => "utf-8"
+  #
+  # config.action_mailer.perform_caching = false
 
-  config.action_mailer.perform_caching = false
-
-  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.delivery_method = :smtp
     # SMTP settings for gmail
-    config.action_mailer.smtp_settings = {
-     :address              => "smtp.gmail.com",
-     :port                 => 587,
-     :domain               => "gmail.com",
-     :user_name            => ENV['GMAIL_USERNAME'],
-     :password             => ENV['GMAIL_PASSWORD'],
+  ActionMailer::Base.smtp_settings = {
+     :address              => "smtp.sendgrid.net",
+     :port                 => "587",
+     :domain               => "heroku.com",
+     :user_name            => ENV['SENDGRID_USERNAME'],
+     :password             => ENV['SENDGRID_PASSWORD'],
      :authentication       => "plain",
      :enable_starttls_auto => true
     }

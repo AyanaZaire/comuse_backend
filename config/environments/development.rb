@@ -36,24 +36,21 @@ Rails.application.configure do
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
-  # change to true to allow email to be sent during development
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-
-  config.action_mailer.perform_caching = false
-
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = { from: “comuse@gmail.com” }
     # SMTP settings for gmail
-    config.action_mailer.smtp_settings = {
+  config.action_mailer.smtp_settings = {
      :address              => "smtp.gmail.com",
      :port                 => 587,
-     :domain               => "localhost:3000",
      :user_name            => Rails.application.secrets.GMAIL_USERNAME,
      :password             => Rails.application.secrets.GMAIL_PASSWORD,
      :authentication       => "plain",
-    :enable_starttls_auto => true
+     :enable_starttls_auto => true
     }
+  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
