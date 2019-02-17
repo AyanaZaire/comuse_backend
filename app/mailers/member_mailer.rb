@@ -3,7 +3,7 @@ include SendGrid
 
 class MemberMailer < ApplicationMailer
 
-  # default from: 'info@comuse.co'
+  default from: 'comuse@gmail.com'
   #
   # def welcome_email(member)
   #   # getting member from create method in member controller
