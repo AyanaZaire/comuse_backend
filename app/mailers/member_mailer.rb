@@ -13,13 +13,19 @@ class MemberMailer < ApplicationMailer
     mail(to: @member.email, subject: 'Welcome to Co.muse')
   end
 
-  def enrolled_student(student, section)
+  def enrolled_student(student, teacher, course, section)
     @student = student
+    @teacher = teacher
+    @course = course
+    @section = section
     mail(to: @student.email, subject: 'Succesfully Enrolled')
   end
 
-  def booked_class(teacher, section)
+  def booked_class(teacher, student, course, section)
     @teacher = teacher
+    @student = student
+    @course = course
+    @section = section
     mail(to: @teacher.email, subject: 'Someone just booked your course!')
   end
 

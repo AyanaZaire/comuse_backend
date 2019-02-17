@@ -8,12 +8,15 @@ class Api::V1::EnrolledController < ApplicationController
 
   def create
     @enrolled = Enrolled.create(enrolled_params)
-    puts @enrolled
-    puts @enrolled.course.time
-    puts @enrolled.course.date
-    puts @enrolled.student.name
-    puts @enrolled.section.title
-    puts @enrolled.section.teacher.name
+    @course = @enrolled.course
+    # @course_date = @enrolled.course.date
+    @student = @enrolled.student
+    # @student_email = @enrolled.student.email
+    @section = @enrolled.section
+    @teacher = @enrolled.section.teacher
+    # @teacher_email = @enrolled.section.teacher.name
+    MemberMailer.enrolled_student(@student, @teacher, @course, @section).deliver
+    MemberMailer.booked_class(@teacher, @student, @course, @section).deliver
     render json: @enrolled
     #create notifications
     # current_section = Section.find_by(id: enrolled_params[:section_id])
