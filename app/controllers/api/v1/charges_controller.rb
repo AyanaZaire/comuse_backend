@@ -51,7 +51,7 @@ class Api::V1::ChargesController < ApplicationController
                   currency: 'usd',
                   # :source => card_token,
                   destination: {
-                    amount: amount,
+                    amount: amount_to_teacher,
                     account: teacher_stripeuid
                   }
                 })
