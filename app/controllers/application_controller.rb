@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
 
   before_action :authenticate
 
-  # toggle api keys and urls in charges and members controller
+  # toggle api keys and urls in charges, members controller, and storage.yml
 
   private
   def authenticate

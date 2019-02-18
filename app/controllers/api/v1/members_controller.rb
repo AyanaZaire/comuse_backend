@@ -3,7 +3,7 @@ require 'pry'
 
 class Api::V1::MembersController < ApplicationController
 
-  skip_before_action :authenticate, only: [:index, :create, :stripe_callback]
+  skip_before_action :authenticate, only: [:index, :create, :update, :stripe_callback]
 
   Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
@@ -49,7 +49,9 @@ class Api::V1::MembersController < ApplicationController
 
   def show
     # show the profile
-    render json: { id: current_member.id, email: current_member.email, name: current_member.name, img_url: current_member.img_url }
+    render json: { id: current_member.id, email: current_member.email, name: current_member.name
+      # , img_url: current_member.img_url 
+    }
   end
 
   def create
@@ -64,6 +66,8 @@ class Api::V1::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
+    @member.photo.purge # purges old photo
+    @member.photo.attach(params[:photo]) #attaches new photo
     @member.update(member_params)
     # render json: Member.find(params[:id])
     if @member.save
@@ -80,7 +84,7 @@ class Api::V1::MembersController < ApplicationController
   private
 
   def member_params
-    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_url, :photo)
+    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :photo)
   end
 
 end

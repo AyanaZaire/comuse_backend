@@ -2,7 +2,7 @@ class MemberSerializer < ActiveModel::Serializer
 
   include Rails.application.routes.url_helpers
 
-  attributes :id, :name, :bio, :location, :website, :skill, :email, :img_url, :stripe_uid, :photo_url
+  attributes :id, :name, :bio, :location, :website, :skill, :email, :stripe_uid, :photo_url
 
   def photo_url
     rails_blob_path(object.photo) if object.photo.attachment

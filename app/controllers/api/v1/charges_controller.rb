@@ -5,11 +5,12 @@ class Api::V1::ChargesController < ApplicationController
   skip_before_action :authenticate, only: [:new, :create]
 
   #config/initializers/stripe.rb for to set up configuration
-  Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
-  # Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+  # Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
+  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
 
   #https://stripe.com/docs/connect/destination-charges
   def create
+
       card_token = params[:charges][:stripeToken]
 
       # Amount in cents
@@ -17,7 +18,8 @@ class Api::V1::ChargesController < ApplicationController
       description = params[:charges][:description]
       teacher = params[:charges][:teacher]
       teacher_stripeuid = Member.find(teacher[:id]).stripe_uid
-
+      donation = params[:charges][:donation]
+      puts donation
       #platform's cut
       cut = ((amount * 10)/100)
       percentage = (amount - cut)
