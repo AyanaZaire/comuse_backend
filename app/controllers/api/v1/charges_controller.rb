@@ -27,34 +27,34 @@ class Api::V1::ChargesController < ApplicationController
       #platform's donation
       platform_donation = ((amount * donation_percentage)/100)
       amount_plus_donation = (amount + platform_donation)
-      amount_to_teacher = (amount - platform_donation)
+      amount_to_teacher = (amount_plus_donation - platform_donation)
       puts amount
       puts donation_percentage
       puts platform_donation
       puts amount_plus_donation
       puts amount_to_teacher
 
-      # customer = Stripe::Customer.create(email: current_member.email, card: card_token)
-      #
-      # charge = Stripe::Charge.create({
-      #             # customer: customer.id,
-      #             # amount: amount,
-      #             # description: description,
-      #             # currency: 'usd',
-      #             # # :source => card_token,
-      #             # destination: {
-      #             #   amount: percentage,
-      #             #   account: teacher_stripeuid
-      #             customer: customer.id,
-      #             amount: amount_plus_donation,
-      #             description: description,
-      #             currency: 'usd',
-      #             # :source => card_token,
-      #             destination: {
-      #               amount: amount_to_teacher,
-      #               account: teacher_stripeuid
-      #             }
-      #           })
+      customer = Stripe::Customer.create(email: current_member.email, card: card_token)
+
+      charge = Stripe::Charge.create({
+                  # customer: customer.id,
+                  # amount: amount,
+                  # description: description,
+                  # currency: 'usd',
+                  # # :source => card_token,
+                  # destination: {
+                  #   amount: percentage,
+                  #   account: teacher_stripeuid
+                  customer: customer.id,
+                  amount: amount_plus_donation,
+                  description: description,
+                  currency: 'usd',
+                  # :source => card_token,
+                  destination: {
+                    amount: amount,
+                    account: teacher_stripeuid
+                  }
+                })
   end
 
   private
