@@ -5,7 +5,7 @@ class Api::V1::MembersController < ApplicationController
 
   skip_before_action :authenticate, only: [:index, :create, :update, :stripe_callback]
 
-  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+  Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
   def index
     @members = Member.all
@@ -18,10 +18,10 @@ class Api::V1::MembersController < ApplicationController
 
   # how member connects their stripe account to co.muse
   def stripe_callback
-    # stripe_test_client_id = ENV['STRIPE_TEST_CLIENT_ID']
-    # stripe_test_secret_key = ENV['STRIPE_TEST_SECRET_KEY']
-    stripe_test_client_id = Rails.application.secrets.STRIPE_TEST_CLIENT_ID
-    stripe_test_secret_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+    stripe_test_client_id = ENV['STRIPE_TEST_CLIENT_ID']
+    stripe_test_secret_key = ENV['STRIPE_TEST_SECRET_KEY']
+    # stripe_test_client_id = Rails.application.secrets.STRIPE_TEST_CLIENT_ID
+    # stripe_test_secret_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
     options = {
               site: 'https://connect.stripe.com',
               authorize_url: '/oauth/authorize',
