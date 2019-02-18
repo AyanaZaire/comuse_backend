@@ -25,12 +25,12 @@ class Api::V1::ChargesController < ApplicationController
       # percentage = (amount - cut)
 
       #platform's donation
-      platform_donation = ((amount * donation_percentage)/100)
+      # platform_donation = ((amount * donation_percentage)/100)
       # amount_plus_donation = (amount + platform_donation)
       # amount_to_teacher = (amount - platform_donation)
       puts amount
       puts donation_percentage
-      puts platform_donation
+      # puts platform_donation
       # puts amount_plus_donation
       # puts amount_to_teacher
 
