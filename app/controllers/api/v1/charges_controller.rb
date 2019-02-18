@@ -34,27 +34,27 @@ class Api::V1::ChargesController < ApplicationController
       puts amount_plus_donation
       puts amount_to_teacher
 
-      customer = Stripe::Customer.create(email: current_member.email, card: card_token)
-
-      charge = Stripe::Charge.create({
-                  # customer: customer.id,
-                  # amount: amount,
-                  # description: description,
-                  # currency: 'usd',
-                  # # :source => card_token,
-                  # destination: {
-                  #   amount: percentage,
-                  #   account: teacher_stripeuid
-                  customer: customer.id,
-                  amount: amount_plus_donation,
-                  description: description,
-                  currency: 'usd',
-                  # :source => card_token,
-                  destination: {
-                    amount: amount_to_teacher,
-                    account: teacher_stripeuid
-                  }
-                })
+      # customer = Stripe::Customer.create(email: current_member.email, card: card_token)
+      #
+      # charge = Stripe::Charge.create({
+      #             # customer: customer.id,
+      #             # amount: amount,
+      #             # description: description,
+      #             # currency: 'usd',
+      #             # # :source => card_token,
+      #             # destination: {
+      #             #   amount: percentage,
+      #             #   account: teacher_stripeuid
+      #             customer: customer.id,
+      #             amount: amount_plus_donation,
+      #             description: description,
+      #             currency: 'usd',
+      #             # :source => card_token,
+      #             destination: {
+      #               amount: amount_to_teacher,
+      #               account: teacher_stripeuid
+      #             }
+      #           })
   end
 
   private
