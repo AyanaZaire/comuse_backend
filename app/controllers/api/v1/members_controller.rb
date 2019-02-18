@@ -18,10 +18,10 @@ class Api::V1::MembersController < ApplicationController
 
   # how member connects their stripe account to co.muse
   def stripe_callback
-    stripe_test_client_id = ENV['STRIPE_TEST_CLIENT_ID']
-    stripe_test_secret_key = ENV['STRIPE_TEST_SECRET_KEY']
-    # stripe_test_client_id = Rails.application.secrets.STRIPE_TEST_CLIENT_ID
-    # stripe_test_secret_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+    # stripe_test_client_id = ENV['STRIPE_TEST_CLIENT_ID']
+    # stripe_test_secret_key = ENV['STRIPE_TEST_SECRET_KEY']
+    stripe_test_client_id = Rails.application.secrets.STRIPE_TEST_CLIENT_ID
+    stripe_test_secret_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
     options = {
               site: 'https://connect.stripe.com',
               authorize_url: '/oauth/authorize',
@@ -50,7 +50,7 @@ class Api::V1::MembersController < ApplicationController
   def show
     # show the profile
     render json: { id: current_member.id, email: current_member.email, name: current_member.name
-      # , img_url: current_member.img_url 
+      # , img_url: current_member.img_url
     }
   end
 

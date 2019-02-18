@@ -42,7 +42,7 @@ class Api::V1::ChargesController < ApplicationController
   private
 
   def charges_params
-    params.require(:charges).permit(:stripeToken, :amount, :description, :teacher)
+    params.require(:charges).permit(:stripeToken, :amount, :description, :teacher, :donation)
   end
 
 end
