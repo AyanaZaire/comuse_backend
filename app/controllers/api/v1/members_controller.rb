@@ -10,6 +10,10 @@ class Api::V1::MembersController < ApplicationController
   def index
     @members = Member.all
     render json: @members
+    # @members = Member.all
+    # render json: @members.map { |member|
+    #   member.as_json.merge({ photo: url_for(member.photo) })
+    # }
   end
 
   # how member connects their stripe account to co.muse
@@ -52,7 +56,6 @@ class Api::V1::MembersController < ApplicationController
     @member = Member.create(member_params)
     if @member.valid?
       MemberMailer.welcome_email(@member).deliver
-      # MemberMailer.send_task_complete_email.deliver_now
       render json: { member: MemberSerializer.new(@member) }, status: :created
     else
       render json: { error: 'failed to create member' }, status: :not_acceptable
@@ -77,7 +80,7 @@ class Api::V1::MembersController < ApplicationController
   private
 
   def member_params
-    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_url)
+    params.permit(:name, :bio, :location, :website, :skill, :email, :password, :img_url, :photo)
   end
 
 end

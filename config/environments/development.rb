@@ -32,7 +32,11 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  # configuration for file upload to aws
+  # tutorial: https://vimeo.com/278727014
+  config.active_storage.service = :amazon_dev
+
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
@@ -53,6 +57,7 @@ Rails.application.configure do
      :enable_starttls_auto => true
     }
   config.action_mailer.perform_caching = false
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
