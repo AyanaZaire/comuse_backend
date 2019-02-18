@@ -46,6 +46,7 @@ Rails.application.configure do
   # configuration for file upload to aws
   # tutorial: https://vimeo.com/278727014
   config.active_storage.service = :amazon_prod
+  Rails.application.routes.default_url_options[:host] = 'https://comuse-backend.herokuapp.com/'
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
