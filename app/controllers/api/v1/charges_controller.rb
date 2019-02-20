@@ -5,8 +5,8 @@ class Api::V1::ChargesController < ApplicationController
   skip_before_action :authenticate, only: [:new, :create]
 
   #config/initializers/stripe.rb for to set up configuration
-  # Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
-  Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
+  Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
+  # Stripe.api_key = Rails.application.secrets.STRIPE_TEST_SECRET_KEY
 
   #https://stripe.com/docs/connect/destination-charges
   def create
@@ -33,6 +33,14 @@ class Api::V1::ChargesController < ApplicationController
       puts platform_donation
       puts amount_plus_donation
       puts amount_to_teacher
+
+      # ex: a class is $150 and donation tip is 10%
+      # amount = $150 #stripe formats this as 15000
+      # donation_percentage = 10% #stripe formats this as 10
+      # platform_donation = $15 #stripe formats this as 1500
+      # amount_plus_donation = $165 #stripe formats this as 16500
+      # amount_to_teacher = $165 - $15 #stripe formats this as 15000
+      # comuse takes in the whole $165 and pays out $150 to the teacher using the stripe connect platform
 
       customer = Stripe::Customer.create(email: current_member.email, card: card_token)
 
