@@ -2,7 +2,7 @@ require "stripe"
 
 class Api::V1::SectionController < ApplicationController
 
-  skip_before_action :authenticate, only: [:index]
+  skip_before_action :authenticate, only: [:index, :create, :update]
 
   Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
