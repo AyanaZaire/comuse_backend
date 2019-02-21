@@ -18,6 +18,7 @@ class Api::V1::SectionController < ApplicationController
   def create
     # debugger
     @section = Section.create(section_params)
+    @section.photo.attach(params[:photo]) #attaches new photo
     render json: @section
   end
 
