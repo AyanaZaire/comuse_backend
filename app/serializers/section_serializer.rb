@@ -5,6 +5,8 @@ class SectionSerializer < ActiveModel::Serializer
   # belongs_to :teacher, class_name: 'Member'
   # has_many :students, class_name: 'Member'
   # has_many :students, through: :enrolled, class_name: 'Member'
+  
+  include Rails.application.routes.url_helpers
 
   def photo_url
     rails_blob_path(object.photo) if object.photo.attachment
