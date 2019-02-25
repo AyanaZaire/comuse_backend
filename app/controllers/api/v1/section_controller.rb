@@ -18,7 +18,7 @@ class Api::V1::SectionController < ApplicationController
   def create
     # debugger
     @section = Section.create(section_params)
-    @section.photo.attach(params[:photo]) #attaches new photo
+    # @section.photo.attach(params[:photo]) #attaches new photo
     render json: @section
   end
 
@@ -27,7 +27,7 @@ class Api::V1::SectionController < ApplicationController
     @section.photo.purge # purges old photo
     @section.photo.attach(params[:photo]) #attaches new photo
     @section.update(section_params)
-    render json: @section
+    render json: @section, status: :accepted
   end
 
   def destroy
