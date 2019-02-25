@@ -27,7 +27,12 @@ class Api::V1::SectionController < ApplicationController
     @section.photo.purge # purges old photo
     @section.photo.attach(params[:photo]) #attaches new photo
     @section.update(section_params)
-    render json: @section, status: :accepted
+    if @section.save
+      render json: @section, status: :accepted
+    else
+      render json: { errors: @section.errors.full_messages }, status: :unprocessible_entity
+    end
+    # render json: @section, status: :accepted
   end
 
   def destroy
