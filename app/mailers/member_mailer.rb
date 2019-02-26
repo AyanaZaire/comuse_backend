@@ -4,7 +4,8 @@
 class MemberMailer < ApplicationMailer
 
   # default from: 'comuse@gmail.com'
-  default from: 'info@comuse.co'
+  # default from: 'info@comuse.co'
+  default from: "Co.muse <info@comuse.co>"
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
   def welcome_email(member)
