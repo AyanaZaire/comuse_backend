@@ -16,9 +16,7 @@ class Api::V1::AuthController < ApplicationController
      # #   puts 'failed'
      # end
 
-     render json: { token: token, member: { id: member.id, email: member.email, name: member.name
-       # , img_url: member.img_url 
-       } }, status: 200
+     render json: { token: token, member: { id: member.id, email: member.email, name: member.name, stripe_uid: member.stripe_uid } }, status: 200
 
    else
      # render "Failed" status: 404

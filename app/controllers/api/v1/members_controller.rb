@@ -56,7 +56,7 @@ class Api::V1::MembersController < ApplicationController
 
   def create
     @member = Member.create(member_params)
-    if @member.valid?
+    if @member.save
       MemberMailer.welcome_email(@member).deliver
       render json: { member: MemberSerializer.new(@member) }, status: :created
     else
