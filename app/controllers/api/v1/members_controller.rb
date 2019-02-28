@@ -60,7 +60,7 @@ class Api::V1::MembersController < ApplicationController
       MemberMailer.welcome_email(@member).deliver
       render json: { member: MemberSerializer.new(@member) }, status: :created
     else
-      render json: { error: 'failed to create member' }, status: :not_acceptable
+      render json: { errors: @member.errors.full_messages }, status: :not_acceptable
     end
   end
 
