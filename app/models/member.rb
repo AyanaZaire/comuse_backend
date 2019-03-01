@@ -18,11 +18,11 @@ class Member < ApplicationRecord
 
   has_secure_password
 
-  validates :name, presence: true
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :bio, presence: true
-  validates :location, presence: true
-  validates :website, presence: true
-  validates :photo, presence: true
+  # validates :name, presence: true
+  # validates :email, presence: true
+  # validates :password, presence: true
+  # validates :bio, presence: true
+  # validates :location, presence: true
+  # validates :website, presence: true
+  # validates :photo, presence: true
 end
