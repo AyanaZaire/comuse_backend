@@ -24,5 +24,5 @@ class Member < ApplicationRecord
   validates :bio, presence: true
   validates :location, presence: true
   validates :website, presence: true
-  validates :photo_url, presence: true
+  validates :photo, presence: true
 end
