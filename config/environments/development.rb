@@ -35,7 +35,6 @@ Rails.application.configure do
   # configuration for file upload to aws
   # tutorial: https://vimeo.com/278727014
   config.active_storage.service = :amazon_dev
-
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
   # ActionMailer Config

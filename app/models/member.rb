@@ -4,6 +4,9 @@ class Member < ApplicationRecord
   has_many :enrolled, foreign_key: 'student_id'
   has_many :sections, through: :enrolled, foreign_key: 'student_id'
   has_many :sections, foreign_key: 'teacher_id'
+
+  has_many :categories, through: :sections
+
   has_many :notifications, foreign_key: 'recipient_id'
 
   has_one_attached :photo

@@ -60,37 +60,47 @@ Section.create([
   ])
 
 Course.create([
-  {time: '1:00 PM', date: '2018-10-06', student_max: 4, section_id: 1},
-  {time: '2:00 PM', date: '2018-10-07', student_max: 4, section_id: 1},
-  {time: '3:00 PM', date: '2018-10-08', student_max: 4, section_id: 1},
-  {time: '4:00 PM', date: '2018-10-10', student_max: 3, section_id: 2},
-  {time: '5:00 PM', date: '2018-10-10', student_max: 3, section_id: 2},
-  {time: '6:00 PM', date: '2018-10-11', student_max: 1, section_id: 3},
-  {time: '7:00 PM', date: '2018-10-12', student_max: 2, section_id: 4},
-  {time: '10:00 AM', date: '2018-10-13', student_max: 2, section_id: 5},
-  {time: '11:00 AM', date: '2018-10-14', student_max: 2, section_id: 6},
-  {time: '12:00 PM', date: '2018-10-15', student_max: 1, section_id: 7},
-  {time: '1:00 PM', date: '2018-10-16', student_max: 1, section_id: 8},
-  {time: '2:00 PM', date: '2018-10-17', student_max: 1, section_id: 8},
-  {time: '3:00 PM', date: '2018-10-18', student_max: 1, section_id: 9},
-  {time: '4:00 PM', date: '2018-10-19', student_max: 1, section_id: 9},
-  {time: '5:00 PM', date: '2018-10-20', student_max: 1, section_id: 10},
-  {time: '6:00 PM', date: '2018-10-21', student_max: 1, section_id: 10},
-  {time: '7:00 PM', date: '2018-10-22', student_max: 1, section_id: 11},
-  {time: '12:00 PM', date: '2018-10-23', student_max: 1, section_id: 11},
-  {time: '1:00 PM', date: '2018-10-24', student_max: 1, section_id: 12},
-  {time: '2:00 PM', date: '2018-10-25', student_max: 1, section_id: 12},
-  {time: '3:00 PM', date: '2018-10-26', student_max: 1, section_id: 12},
-  {time: '4:00 PM', date: '2018-10-27', student_max: 1, section_id: 13},
-  {time: '5:00 PM', date: '2018-10-28', student_max: 1, section_id: 13},
-  {time: '6:00 PM', date: '2018-10-29', student_max: 1, section_id: 14},
-  {time: '7:00 PM', date: '2018-10-30', student_max: 1, section_id: 14},
-  {time: '12:00 PM', date: '2018-10-31', student_max: 1, section_id: 15},
-  {time: '1:00 PM', date: '2018-11-01', student_max: 1, section_id: 15},
-  {time: '10:00 AM', date: '2018-11-02', student_max: 1, section_id: 15},
-  {time: '1:00 PM', date: '2018-11-03', student_max: 1, section_id: 16},
-  {time: '10:00 AM', date: '2018-11-04', student_max: 1, section_id: 16}
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 1},
+  {time: '2 hrs', title: 'Video 1', video_url: "https://youtu.be/FPoKiGQzbSQ", section_id: 1},
+  {time: '3 hrs', title: 'Video 2', video_url: "https://youtu.be/9UvBX3REqSY", section_id: 1},
+  {time: '1 hrs', title: 'Video 3', video_url: "https://youtu.be/FRkev5Aooms", section_id: 1},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 2},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 2},
+  {time: '3 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 3},
+  {time: '2 hrs', title: 'Video 1', video_url: "https://youtu.be/FPoKiGQzbSQ", section_id: 3},
+  {time: '3 hrs', title: 'Video 2', video_url: "https://youtu.be/9UvBX3REqSY", section_id: 3},
+  {time: '1 hrs', title: 'Video 3', video_url: "https://youtu.be/FRkev5Aooms", section_id: 3},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 4},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 5},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 6},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 7},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 8},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 8},
+  {time: '3 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 9},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 9},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 10},
+  {time: '3 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 10},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 11},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 11},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 12},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 12},
+  {time: '3 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 12},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 13},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 13},
+  {time: '3 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 14},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 14},
+  {time: '2 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 15},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 15},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 15},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 16},
+  {time: '1 hrs', title: 'Introduction', video_url: "https://youtu.be/hHcyJPTTn9w", section_id: 16}
   ])
+
+
+zola_enrolled_in_sculpture = Enrolled.create(student_id: 1, section_id: 3)
+izzie_enrolled_in_painting = Enrolled.create(student_id: 2, section_id: 1)
+
+
 
 # painting_section = Enrolled.create(student_id: 2, section_id: 1, course_id: 1)
 # painting_section = Enrolled.create(student_id: 3, section_id: 1, course_id: 1)

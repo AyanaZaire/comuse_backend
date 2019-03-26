@@ -28,7 +28,7 @@ class Api::V1::EnrolledController < ApplicationController
   private
 
   def enrolled_params
-    params.permit(:student_id, :section_id, :course_id)
+    params.permit(:student_id, :section_id)
   end
 
 end
