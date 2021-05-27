@@ -57,7 +57,7 @@ Card Number: `4242 4242 4242 4242` <br>
 
 * Application initialization: `rails s`
 
-To install coLab, fork and clone this repository on to your local machine.
+To install Comuse, fork and clone this repository on to your local machine.
 
 Run the following line to install all gems, migrate the database, and seed the databased with initial data:
 
